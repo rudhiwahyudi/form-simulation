@@ -1,0 +1,51 @@
+name: Scheduled 10 dummy form responses
+
+on:
+  workflow_dispatch:
+    inputs:
+      respondent:
+        description: Respondent ID (R01-R10)
+        required: true
+        default: R01
+  schedule:
+    - cron: "16 19 24 11 *"
+    - cron: "21 21 24 11 *"
+    - cron: "31 0 25 11 *"
+    - cron: "2 3 25 11 *"
+    - cron: "37 5 25 11 *"
+    - cron: "38 8 25 11 *"
+    - cron: "29 11 25 11 *"
+    - cron: "55 13 25 11 *"
+    - cron: "59 16 25 11 *"
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Submit scheduled respondent
+        env:
+          RESPONDENT: ${{ github.event_name == 'workflow_dispatch' && inputs.respondent || '' }}
+        shell: bash
+        run: |
+          case "${{ github.event.schedule }}" in
+            "16 19 24 11 *") respondent="R02" ;;
+            "21 21 24 11 *") respondent="R03" ;;
+            "31 0 25 11 *") respondent="R04" ;;
+            "2 3 25 11 *") respondent="R05" ;;
+            "37 5 25 11 *") respondent="R06" ;;
+            "38 8 25 11 *") respondent="R07" ;;
+            "29 11 25 11 *") respondent="R08" ;;
+            "55 13 25 11 *") respondent="R09" ;;
+            "59 16 25 11 *") respondent="R10" ;;
+            *) respondent="$RESPONDENT" ;;
+          esac
+
+          node cloud-submit.js "$respondent"

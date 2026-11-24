@@ -1,0 +1,19 @@
+{
+  "name": "form-simulation",
+  "version": "1.0.0",
+  "description": "Automasi pengisian Google Form skala tryout + rekap skor",
+  "main": "submit.js",
+  "scripts": {
+    "dry-run": "node submit.js --dry-run --count=1 --delay=0",
+    "submit": "node submit.js --count=10 --delay=45000",
+    "cloud-submit": "node cloud-submit.js",
+    "pull": "node pull.js",
+    "pull:login": "node pull.js --login"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "playwright": "^1.65.1"
+  }
+}

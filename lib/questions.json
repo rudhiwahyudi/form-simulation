@@ -1,0 +1,1283 @@
+[
+  {
+    "formIndex": 0,
+    "entry": "1049446518",
+    "type": "choice",
+    "title": "Apakah anda bersedia menjadi responde penelitian ini?",
+    "options": [
+      "Ya",
+      "Tidak"
+    ],
+    "dimension": null,
+    "reverse": false
+  },
+  {
+    "formIndex": 2,
+    "entry": "1909891306",
+    "type": "text",
+    "title": "Nama / Inisial",
+    "options": null,
+    "dimension": null,
+    "reverse": false
+  },
+  {
+    "formIndex": 3,
+    "entry": "1824916719",
+    "type": "text",
+    "title": "Usia",
+    "options": null,
+    "dimension": null,
+    "reverse": false
+  },
+  {
+    "formIndex": 4,
+    "entry": "1520202643",
+    "type": "choice",
+    "title": "Status Pekerjaa",
+    "options": [
+      "Aktif",
+      "Tidak Aktif"
+    ],
+    "dimension": null,
+    "reverse": false
+  },
+  {
+    "formIndex": 5,
+    "entry": "811118187",
+    "type": "text",
+    "title": "Domisili",
+    "options": null,
+    "dimension": null,
+    "reverse": false
+  },
+  {
+    "formIndex": 6,
+    "entry": "694573721",
+    "type": "choice",
+    "title": "Lama Bekerja",
+    "options": [
+      "Kurang dari 1 tahun",
+      "Lebih dari 1 tahun"
+    ],
+    "dimension": null,
+    "reverse": false
+  },
+  {
+    "formIndex": 8,
+    "entry": "1566048352",
+    "type": "choice",
+    "title": "Saya merasa selalu berhasil dalam pekerjaan membuat saya layak dianggap sebagai laki-laki yang sukses",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.success_power_competition",
+    "reverse": false
+  },
+  {
+    "formIndex": 9,
+    "entry": "822704994",
+    "type": "choice",
+    "title": "Saya tetap merasa berharga meskipun saya mengalami kegagalan dalam pekerjaan",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.success_power_competition",
+    "reverse": true
+  },
+  {
+    "formIndex": 10,
+    "entry": "955493809",
+    "type": "choice",
+    "title": "Saya merasa kegagalan dalam pekerjaan menunjukkan bahwa saya kurang sukses sebagai laki-laki",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.success_power_competition",
+    "reverse": false
+  },
+  {
+    "formIndex": 11,
+    "entry": "2067634295",
+    "type": "choice",
+    "title": "Saya dapat menerima kegagalan dalam pekerjaan tanpa merasa harga diri saya sebagai laki-laki menurun",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.success_power_competition",
+    "reverse": true
+  },
+  {
+    "formIndex": 12,
+    "entry": "6775480",
+    "type": "choice",
+    "title": "saya merasa harga diri saya menurun ketika harus mengikuti keputusan orang lain",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.success_power_competition",
+    "reverse": false
+  },
+  {
+    "formIndex": 13,
+    "entry": "755194643",
+    "type": "choice",
+    "title": "Saya dapat menerima kekalahan dalam persaingan tanpa merasa gagal sebagai laki-laki",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.success_power_competition",
+    "reverse": true
+  },
+  {
+    "formIndex": 14,
+    "entry": "811009117",
+    "type": "choice",
+    "title": "Saya merasa perlu menjadi pengambil Keputusan utama agar posisi saya sebagai laki-laki tetap dihargai",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.success_power_competition",
+    "reverse": false
+  },
+  {
+    "formIndex": 15,
+    "entry": "1665739257",
+    "type": "choice",
+    "title": "Saya tidak harus mengendalikan keputusan orang lain untuk merasa dihargai sebagai laki-laki",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.success_power_competition",
+    "reverse": true
+  },
+  {
+    "formIndex": 16,
+    "entry": "1471863154",
+    "type": "choice",
+    "title": "Saya merasa gagal sebagai laki-laki ketika kalah bersaing dengan orang lain",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.success_power_competition",
+    "reverse": false
+  },
+  {
+    "formIndex": 17,
+    "entry": "1135304884",
+    "type": "choice",
+    "title": "Saya dapat menerima kekalahan dalam persaingan tanpa merasa gagal sebagai laki-laki",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.success_power_competition",
+    "reverse": true
+  },
+  {
+    "formIndex": 18,
+    "entry": "549007274",
+    "type": "choice",
+    "title": "Saya merasa harus lebih unggul dari orang lain agar dianggap berhasil sebagai laki-laki",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.success_power_competition",
+    "reverse": false
+  },
+  {
+    "formIndex": 19,
+    "entry": "171830650",
+    "type": "choice",
+    "title": "Saya tetap merasa berhasil meskipun pencapaian saya tidak lebih tinggi daripada orang lain",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.success_power_competition",
+    "reverse": true
+  },
+  {
+    "formIndex": 20,
+    "entry": "1936320460",
+    "type": "choice",
+    "title": "Saya kesuliatn menjelaskan perasaan saya melalui kata-kata atau ungkapan",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.restrictive_emotionality",
+    "reverse": false
+  },
+  {
+    "formIndex": 21,
+    "entry": "5430153",
+    "type": "choice",
+    "title": "Saya dapat menemukan kata-kata yang sesuai untuk menjelaskan perasaan saya",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.restrictive_emotionality",
+    "reverse": true
+  },
+  {
+    "formIndex": 22,
+    "entry": "950304964",
+    "type": "choice",
+    "title": "Saya sulit menceritakan apa yang saya rasakan meskipun ingin dipahami",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.restrictive_emotionality",
+    "reverse": false
+  },
+  {
+    "formIndex": 23,
+    "entry": "284331004",
+    "type": "choice",
+    "title": "Saya dapat menceritakan apa yang saya rasakan kepada orang yang saya percaya",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.restrictive_emotionality",
+    "reverse": true
+  },
+  {
+    "formIndex": 24,
+    "entry": "135624016",
+    "type": "choice",
+    "title": "Saya menahan kesedihan karena takut dianggap lemah sebagai laki-laki",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.restrictive_emotionality",
+    "reverse": false
+  },
+  {
+    "formIndex": 25,
+    "entry": "1101836383",
+    "type": "choice",
+    "title": "Saya dapat menunjukkan kesedihan tanpa merasa lemah sebagai laki-laki",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.restrictive_emotionality",
+    "reverse": true
+  },
+  {
+    "formIndex": 26,
+    "entry": "1917267130",
+    "type": "choice",
+    "title": "Saya menyembunyikan rasa takut agar tetap terlihat kuat sebagai laki-laki",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.restrictive_emotionality",
+    "reverse": false
+  },
+  {
+    "formIndex": 27,
+    "entry": "1078038807",
+    "type": "choice",
+    "title": "Saya dapat mengakui rasa takut tanpa merasa hal tersebut menurunkan harga diri saya sebagai laki-laki",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.restrictive_emotionality",
+    "reverse": true
+  },
+  {
+    "formIndex": 28,
+    "entry": "418832351",
+    "type": "choice",
+    "title": "Saya merasa canggung menunjukkan kasih sayang kepada teman laki-laki",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.restrictive_affection",
+    "reverse": false
+  },
+  {
+    "formIndex": 29,
+    "entry": "1334533238",
+    "type": "choice",
+    "title": "Menurut saya, menunjukkan kasih sayang pada teman laki-laki tidak akan mengurangi sisi maskulinitas laki-laki",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.restrictive_affection",
+    "reverse": true
+  },
+  {
+    "formIndex": 30,
+    "entry": "1638701769",
+    "type": "choice",
+    "title": "Sebagai laki-laki saya merasa tidak perlu menunjukkan kasih sayang secara terbuka kepada laki-laki lain",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.restrictive_affection",
+    "reverse": false
+  },
+  {
+    "formIndex": 31,
+    "entry": "127904651",
+    "type": "choice",
+    "title": "Saya merasa nyaman menunjukkan kepedulian kepada teman laki-laki",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.restrictive_affection",
+    "reverse": true
+  },
+  {
+    "formIndex": 32,
+    "entry": "1818602917",
+    "type": "choice",
+    "title": "Saya merasa tidak nyaman melakukan kontak fisik yang menunjukkan kedekatan dengan teman laki-laki",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.restrictive_affection",
+    "reverse": false
+  },
+  {
+    "formIndex": 33,
+    "entry": "2013205131",
+    "type": "choice",
+    "title": "Saya merasa nyaman menunjukkan kedekatan kepada teman laki-laki melalui sentuhan yang wajar",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.restrictive_affection",
+    "reverse": true
+  },
+  {
+    "formIndex": 34,
+    "entry": "882060228",
+    "type": "choice",
+    "title": "Saya tidak keberatan merangkul teman laki-laki ketika situasinya sesuai",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.restrictive_affection",
+    "reverse": true
+  },
+  {
+    "formIndex": 35,
+    "entry": "671818981",
+    "type": "choice",
+    "title": "Saya merasa sulit menceritakan perasaan pribadi kepada teman laki-laki",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.restrictive_affection",
+    "reverse": false
+  },
+  {
+    "formIndex": 36,
+    "entry": "1624102198",
+    "type": "choice",
+    "title": "Saya merasa nyaman berbagi perasaan pribadi dengan teman laki-laki yang saya percaya",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.restrictive_affection",
+    "reverse": true
+  },
+  {
+    "formIndex": 37,
+    "entry": "536900192",
+    "type": "choice",
+    "title": "Saya memilih menyimpan masalah sendiri daripada membicarakannya dengan teman laki-laki",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.restrictive_affection",
+    "reverse": false
+  },
+  {
+    "formIndex": 38,
+    "entry": "1135019004",
+    "type": "choice",
+    "title": "Saya dapat menceritakan masalah yang saya hadapi kepada teman laki-laki",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.restrictive_affection",
+    "reverse": true
+  },
+  {
+    "formIndex": 39,
+    "entry": "439777464",
+    "type": "choice",
+    "title": "Saya merasa sulit memenuhi tuntutan pekerjaan sambil menjaga hubungan dengan keluarga",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.work_family_conflict",
+    "reverse": false
+  },
+  {
+    "formIndex": 40,
+    "entry": "1498764074",
+    "type": "choice",
+    "title": "Saya dapat memenuhi tuntutan pekerjaan sambil menjaga hubungan dengan keluarga",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.work_family_conflict",
+    "reverse": true
+  },
+  {
+    "formIndex": 41,
+    "entry": "1320041283",
+    "type": "choice",
+    "title": "Saya merasa tertekan ketika urusan pekerjaan membatasi waktu bersama keluarga",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.work_family_conflict",
+    "reverse": false
+  },
+  {
+    "formIndex": 42,
+    "entry": "1927438709",
+    "type": "choice",
+    "title": "Saya dapat menyediakan waktu bersama keluarga di tengah tuntutan pekerjaan",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.work_family_conflict",
+    "reverse": true
+  },
+  {
+    "formIndex": 43,
+    "entry": "1834446621",
+    "type": "choice",
+    "title": "Saya merasa harus tetap bekerja meskipun mengambil jatah waktu istirahat",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.work_family_conflict",
+    "reverse": false
+  },
+  {
+    "formIndex": 44,
+    "entry": "1373667768",
+    "type": "choice",
+    "title": "Saya dapat mengambil waktu istirahat tanpa merasa harus terus bekerja",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.work_family_conflict",
+    "reverse": true
+  },
+  {
+    "formIndex": 45,
+    "entry": "1303083549",
+    "type": "choice",
+    "title": "Saya sulit menikmati waktu santai karena merasa harus mendahulukan pekerjaan",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.work_family_conflict",
+    "reverse": false
+  },
+  {
+    "formIndex": 46,
+    "entry": "2075481205",
+    "type": "choice",
+    "title": "Saya dapat menikmati waktu santai tanpa merasa harus selalu mendahulukan pekerjaan",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "grc.work_family_conflict",
+    "reverse": true
+  },
+  {
+    "formIndex": 48,
+    "entry": "1736119537",
+    "type": "choice",
+    "title": "Saya dapat menerima bahwa saya mungkin mengalami masalah psikologis",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "help.openness",
+    "reverse": false
+  },
+  {
+    "formIndex": 49,
+    "entry": "167660504",
+    "type": "choice",
+    "title": "Saya enggan mengakui bahwa saya mungkin mengalami masalah psikologis",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "help.openness",
+    "reverse": true
+  },
+  {
+    "formIndex": 50,
+    "entry": "1040561806",
+    "type": "choice",
+    "title": "Saya terbuka membicarakan kesulitan psikologis yang saya alami",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "help.openness",
+    "reverse": false
+  },
+  {
+    "formIndex": 51,
+    "entry": "1569954906",
+    "type": "choice",
+    "title": "Saya menganggap kesulitan psikologis sebaiknya tidak dibicarakan",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "help.openness",
+    "reverse": true
+  },
+  {
+    "formIndex": 52,
+    "entry": "1122982465",
+    "type": "choice",
+    "title": "Saya terbuka terhadap kemungkinan membutuhkan bantuan profesional untuk masalah psikologis saya",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "help.openness",
+    "reverse": false
+  },
+  {
+    "formIndex": 53,
+    "entry": "1649279125",
+    "type": "choice",
+    "title": "Saya sulit menerima bahwa masalah psikologis saya mungkin membutuhkan bantuan profesional",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "help.openness",
+    "reverse": true
+  },
+  {
+    "formIndex": 54,
+    "entry": "2119566627",
+    "type": "choice",
+    "title": "Saya memandang bantuan profesional sebagai pilihan yang wajar untuk memahami masalah psikologis",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "help.openness",
+    "reverse": false
+  },
+  {
+    "formIndex": 55,
+    "entry": "966044412",
+    "type": "choice",
+    "title": "Saya menganggap bantuan profesional tidak perlu dipertimbangkan untuk masalah psikologis",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "help.openness",
+    "reverse": true
+  },
+  {
+    "formIndex": 56,
+    "entry": "1156800353",
+    "type": "choice",
+    "title": "Saya bersedia menghubungi profesional kesehatan mental ketika masalah psikologis mengganggu kehidupan saya",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "help.intention",
+    "reverse": false
+  },
+  {
+    "formIndex": 57,
+    "entry": "486994189",
+    "type": "choice",
+    "title": "Saya enggan menghubungi profesional kesehatan mental meskipun masalah psikologis mengganggu kehidupan saya",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "help.intention",
+    "reverse": true
+  },
+  {
+    "formIndex": 58,
+    "entry": "339503719",
+    "type": "choice",
+    "title": "Saya berniat mencari bantuan profesional jika kesulitan psikologis tidak dapat saya atasi sendiri",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "help.intention",
+    "reverse": false
+  },
+  {
+    "formIndex": 59,
+    "entry": "1266725302",
+    "type": "choice",
+    "title": "Saya akan menghindari bantuan profesional meskipun kesulitan psikologis tidak dapat saya atasi sendiri",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "help.intention",
+    "reverse": true
+  },
+  {
+    "formIndex": 60,
+    "entry": "335922688",
+    "type": "choice",
+    "title": "Saya mampu memilih untuk mencari bantuan professional ketika membutuhkannya",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "help.intention",
+    "reverse": false
+  },
+  {
+    "formIndex": 61,
+    "entry": "1475254759",
+    "type": "choice",
+    "title": "Saya merasa tidak mampu mengambil langkah untuk memperoleh bantuan profesional ketika membutuhkannya",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "help.intention",
+    "reverse": true
+  },
+  {
+    "formIndex": 62,
+    "entry": "1156018502",
+    "type": "choice",
+    "title": "Saya mau membuat janji konsultasi dengan profesional kesehatan mental bila diperlukan",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "help.intention",
+    "reverse": false
+  },
+  {
+    "formIndex": 63,
+    "entry": "1613432184",
+    "type": "choice",
+    "title": "Saya merasa sulit memulai proses konsultasi dengan profesional kesehatan mental meskipun diperlukan",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "help.intention",
+    "reverse": true
+  },
+  {
+    "formIndex": 64,
+    "entry": "739520203",
+    "type": "choice",
+    "title": "Saya tetap bersedia mencari bantuan profesional meskipun orang yang penting bagi saya mungkin menilai negatif",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "help.social_barrier",
+    "reverse": false
+  },
+  {
+    "formIndex": 65,
+    "entry": "1110186746",
+    "type": "choice",
+    "title": "Kekhawatiran akan penilaian orang yang penting bagi saya membuat saya enggan mencari bantuan profesional",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "help.social_barrier",
+    "reverse": true
+  },
+  {
+    "formIndex": 66,
+    "entry": "1410497347",
+    "type": "choice",
+    "title": "Saya tetap mempertimbangkan bantuan profesional meskipun orang dekat tidak menyetujuinya",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "help.social_barrier",
+    "reverse": false
+  },
+  {
+    "formIndex": 67,
+    "entry": "46597379",
+    "type": "choice",
+    "title": "Saya akan mengurungkan pencarian bantuan profesional jika orang dekat tidak menyetujuinya",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "help.social_barrier",
+    "reverse": true
+  },
+  {
+    "formIndex": 68,
+    "entry": "524265484",
+    "type": "choice",
+    "title": "Saya tidak keberatan orang dekat mengetahui bahwa saya berkonsultasi dengan profesional kesehatan mental",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "help.social_barrier",
+    "reverse": false
+  },
+  {
+    "formIndex": 69,
+    "entry": "1852785514",
+    "type": "choice",
+    "title": "Saya akan menutupi informasi bahwa saya melakukan konsultasi psikolgis karena khawatir dianggap bermasalah",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "help.social_barrier",
+    "reverse": true
+  },
+  {
+    "formIndex": 70,
+    "entry": "1401313869",
+    "type": "choice",
+    "title": "Saya dapat membicarakan penggunaan bantuan profesional tanpa khawatir diberi penilaian negatif",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "help.social_barrier",
+    "reverse": false
+  },
+  {
+    "formIndex": 71,
+    "entry": "27089651",
+    "type": "choice",
+    "title": "Saya menghindari pembicaraan tentang bantuan profesional karena takut diberi cap negatif",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "help.social_barrier",
+    "reverse": true
+  },
+  {
+    "formIndex": 73,
+    "entry": "1390886248",
+    "type": "choice",
+    "title": "Saya merasa energi saya terkuras setelah menjalani pekerjaan",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "burnout.emotional_exhaustion",
+    "reverse": false
+  },
+  {
+    "formIndex": 74,
+    "entry": "2144385793",
+    "type": "choice",
+    "title": "Saya masih memiliki energi setelah menjalani pekerjaan",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "burnout.emotional_exhaustion",
+    "reverse": true
+  },
+  {
+    "formIndex": 75,
+    "entry": "1907881000",
+    "type": "choice",
+    "title": "Saya merasa kehabisan tenaga ketika sedang mengerjakan tugas pekerjaan",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "burnout.emotional_exhaustion",
+    "reverse": false
+  },
+  {
+    "formIndex": 76,
+    "entry": "1517059429",
+    "type": "choice",
+    "title": "Saya memiliki tenaga yang cukup untuk menjalankan tugas pekerjaan",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "burnout.emotional_exhaustion",
+    "reverse": true
+  },
+  {
+    "formIndex": 77,
+    "entry": "2024247863",
+    "type": "choice",
+    "title": "Saya merasa lelah ketika harus kembali menjalani rutinitas pekerjaan",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "burnout.emotional_exhaustion",
+    "reverse": false
+  },
+  {
+    "formIndex": 78,
+    "entry": "1710135062",
+    "type": "choice",
+    "title": "Saya merasa bersemangat ketika kembali menjalani rutinitas pekerjaan",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "burnout.emotional_exhaustion",
+    "reverse": true
+  },
+  {
+    "formIndex": 79,
+    "entry": "1585466923",
+    "type": "choice",
+    "title": "Menjalani aktivitas pekerjaan sehari-hari terasa melelahkan bagi saya",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "burnout.emotional_exhaustion",
+    "reverse": false
+  },
+  {
+    "formIndex": 80,
+    "entry": "817011485",
+    "type": "choice",
+    "title": "Saya dapat menjalani aktivitas pekerjaan sehari-hari tanpa merasa kelelahan",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "burnout.emotional_exhaustion",
+    "reverse": true
+  },
+  {
+    "formIndex": 81,
+    "entry": "2058904827",
+    "type": "choice",
+    "title": "Saya memandang pekerjaan saya sebagai kegiatan yang tidak lagi berarti",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "burnout.cynicism",
+    "reverse": false
+  },
+  {
+    "formIndex": 82,
+    "entry": "782761320",
+    "type": "choice",
+    "title": "Saya tetap memandang pekerjaan saya sebagai kegiatan yang berarti",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "burnout.cynicism",
+    "reverse": true
+  },
+  {
+    "formIndex": 83,
+    "entry": "928729429",
+    "type": "choice",
+    "title": "Saya meragukan nilai dari pekerjaan yang saya lakukan",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "burnout.cynicism",
+    "reverse": false
+  },
+  {
+    "formIndex": 84,
+    "entry": "1419246214",
+    "type": "choice",
+    "title": "Saya tetap melihat nilai dari pekerjaan yang saya lakukan",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "burnout.cynicism",
+    "reverse": true
+  },
+  {
+    "formIndex": 85,
+    "entry": "1030106023",
+    "type": "choice",
+    "title": "Saya merasa semakin tidak peduli terhadap pekerjaan saya",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "burnout.cynicism",
+    "reverse": false
+  },
+  {
+    "formIndex": 86,
+    "entry": "913830004",
+    "type": "choice",
+    "title": "Saya tetap peduli terhadap pekerjaan saya",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "burnout.cynicism",
+    "reverse": true
+  },
+  {
+    "formIndex": 87,
+    "entry": "1277294475",
+    "type": "choice",
+    "title": "Saya merasa tidak terikat secara emosional dari pekerjaan yang saya jalani",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "burnout.cynicism",
+    "reverse": false
+  },
+  {
+    "formIndex": 88,
+    "entry": "1325495034",
+    "type": "choice",
+    "title": "Saya tetap merasa terikat secara emosional dalam pekerjaan yang saya jalani",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "burnout.cynicism",
+    "reverse": true
+  },
+  {
+    "formIndex": 89,
+    "entry": "1592492619",
+    "type": "choice",
+    "title": "Saya meragukan kemampuan saya untuk menyelesaikan pekerjaan dengan baik",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "burnout.professional_efficacy",
+    "reverse": false
+  },
+  {
+    "formIndex": 90,
+    "entry": "631948696",
+    "type": "choice",
+    "title": "Saya yakin dapat menyelesaikan pekerjaan dengan baik",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "burnout.professional_efficacy",
+    "reverse": true
+  },
+  {
+    "formIndex": 91,
+    "entry": "1900111033",
+    "type": "choice",
+    "title": "Saya merasa kurang mampu menangani masalah yang muncul dalam pekerjaan",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "burnout.professional_efficacy",
+    "reverse": false
+  },
+  {
+    "formIndex": 92,
+    "entry": "1364122562",
+    "type": "choice",
+    "title": "Saya merasa mampu menangani masalah yang muncul dalam pekerjaan",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "burnout.professional_efficacy",
+    "reverse": true
+  },
+  {
+    "formIndex": 93,
+    "entry": "1097544313",
+    "type": "choice",
+    "title": "Saya merasa hasil pekerjaan saya tidak memberikan kontribusi yang berarti",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "burnout.professional_efficacy",
+    "reverse": false
+  },
+  {
+    "formIndex": 94,
+    "entry": "1905937739",
+    "type": "choice",
+    "title": "Saya merasa hasil pekerjaan saya memberikan kontribusi yang berarti",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "burnout.professional_efficacy",
+    "reverse": true
+  },
+  {
+    "formIndex": 95,
+    "entry": "103956090",
+    "type": "choice",
+    "title": "Saya sulit melihat pencapaian yang berarti dari pekerjaan saya",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "burnout.professional_efficacy",
+    "reverse": false
+  },
+  {
+    "formIndex": 96,
+    "entry": "1693800437",
+    "type": "choice",
+    "title": "Saya dapat melihat pencapaian yang berarti dari pekerjaan saya",
+    "options": [
+      "Sangat Tidak Setuju",
+      "Tidak Setuju",
+      "Setuju",
+      "Sangat Setuju"
+    ],
+    "dimension": "burnout.professional_efficacy",
+    "reverse": true
+  }
+]
