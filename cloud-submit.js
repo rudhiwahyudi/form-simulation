@@ -46,6 +46,19 @@ async function submit(respondentId) {
     }
   }
 
+  if (process.argv.includes('--dry-run')) {
+    console.log(
+      JSON.stringify({
+        respondentId,
+        name: respondent.demographics.nama,
+        domisili: respondent.demographics.domisili,
+        status: 'dry-run',
+        entries: body.size
+      })
+    );
+    return;
+  }
+
   const response = await fetch(FORM_RESPONSE_URL, {
     method: 'POST',
     headers: {

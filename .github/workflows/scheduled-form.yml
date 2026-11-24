@@ -7,6 +7,11 @@ on:
         description: Respondent ID (R01-R10)
         required: true
         default: R01
+      dry_run:
+        description: Validate payload without submitting
+        required: true
+        type: boolean
+        default: true
   schedule:
     - cron: "16 19 24 11 *"
     - cron: "21 21 24 11 *"
@@ -33,6 +38,7 @@ jobs:
       - name: Submit scheduled respondent
         env:
           RESPONDENT: ${{ github.event_name == 'workflow_dispatch' && inputs.respondent || '' }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || 'false' }}
         shell: bash
         run: |
           case "${{ github.event.schedule }}" in
@@ -48,4 +54,8 @@ jobs:
             *) respondent="$RESPONDENT" ;;
           esac
 
-          node cloud-submit.js "$respondent"
+          if [ "$DRY_RUN" = "true" ]; then
+            node cloud-submit.js "$respondent" --dry-run
+          else
+            node cloud-submit.js "$respondent"
+          fi
