@@ -1,27 +1,29 @@
 name: Scheduled 10 dummy form responses
 
 on:
+  # Poller tiap 5 menit. Jadwal pengisian sebenarnya disimpan di
+  # data/schedule.json, jadi jadwal yang terlewat tetap dikirim (catch-up)
+  # dan tidak hilang seperti pada cron per-jam.
+  schedule:
+    - cron: "*/5 * * * *"
   workflow_dispatch:
     inputs:
       respondent:
-        description: Respondent ID (R01-R10)
-        required: true
-        default: R01
+        description: "Paksa kirim satu responden (R01-R10), kosongkan untuk mode jadwal"
+        required: false
+        default: ""
       dry_run:
-        description: Validate payload without submitting
+        description: "Validasi payload tanpa mengirim"
         required: true
         type: boolean
-        default: true
-  schedule:
-    - cron: "16 19 24 11 *"
-    - cron: "21 21 24 11 *"
-    - cron: "31 0 25 11 *"
-    - cron: "2 3 25 11 *"
-    - cron: "37 5 25 11 *"
-    - cron: "38 8 25 11 *"
-    - cron: "29 11 25 11 *"
-    - cron: "55 13 25 11 *"
-    - cron: "59 16 25 11 *"
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scheduled-form
+  cancel-in-progress: false
 
 jobs:
   submit:
@@ -35,27 +37,27 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Submit scheduled respondent
+      - name: Jalankan penjadwal
         env:
-          RESPONDENT: ${{ github.event_name == 'workflow_dispatch' && inputs.respondent || '' }}
-          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || 'false' }}
+          RESPONDENT: ${{ inputs.respondent }}
+          DRY_RUN: ${{ inputs.dry_run }}
         shell: bash
         run: |
-          case "${{ github.event.schedule }}" in
-            "16 19 24 11 *") respondent="R02" ;;
-            "21 21 24 11 *") respondent="R03" ;;
-            "31 0 25 11 *") respondent="R04" ;;
-            "2 3 25 11 *") respondent="R05" ;;
-            "37 5 25 11 *") respondent="R06" ;;
-            "38 8 25 11 *") respondent="R07" ;;
-            "29 11 25 11 *") respondent="R08" ;;
-            "55 13 25 11 *") respondent="R09" ;;
-            "59 16 25 11 *") respondent="R10" ;;
-            *) respondent="$RESPONDENT" ;;
-          esac
+          args=()
+          if [ -n "$RESPONDENT" ]; then args+=("--force=$RESPONDENT"); fi
+          if [ "$DRY_RUN" = "true" ]; then args+=("--dry-run"); fi
+          node run-schedule.js "${args[@]}"
 
-          if [ "$DRY_RUN" = "true" ]; then
-            node cloud-submit.js "$respondent" --dry-run
-          else
-            node cloud-submit.js "$respondent"
+      - name: Simpan state jadwal
+        if: ${{ inputs.dry_run != true }}
+        shell: bash
+        run: |
+          if [ -z "$(git status --porcelain data)" ]; then
+            echo "Tidak ada perubahan state."
+            exit 0
           fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          git commit -m "chore: update jadwal & state pengisian"
+          git push

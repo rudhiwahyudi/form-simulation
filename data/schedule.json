@@ -1,0 +1,58 @@
+{
+  "generatedAt": "2026-11-25T00:14:20.061Z",
+  "timezone": "WIB (UTC+7)",
+  "windowStart": "2026-11-25T07:25:00+07:00",
+  "windowEnd": "2026-11-26T23:59:00+07:00",
+  "entries": [
+    {
+      "respondentId": "R01",
+      "targetAt": "2026-11-25T07:25:00+07:00",
+      "gapMs": 0
+    },
+    {
+      "respondentId": "R02",
+      "targetAt": "2026-11-25T10:45:00+07:00",
+      "gapMs": 12039346
+    },
+    {
+      "respondentId": "R03",
+      "targetAt": "2026-11-25T15:18:00+07:00",
+      "gapMs": 16343402
+    },
+    {
+      "respondentId": "R04",
+      "targetAt": "2026-11-25T19:00:00+07:00",
+      "gapMs": 13338715
+    },
+    {
+      "respondentId": "R05",
+      "targetAt": "2026-11-25T23:05:00+07:00",
+      "gapMs": 14682377
+    },
+    {
+      "respondentId": "R06",
+      "targetAt": "2026-11-26T02:22:00+07:00",
+      "gapMs": 11843166
+    },
+    {
+      "respondentId": "R07",
+      "targetAt": "2026-11-26T06:05:00+07:00",
+      "gapMs": 13396318
+    },
+    {
+      "respondentId": "R08",
+      "targetAt": "2026-11-26T10:22:00+07:00",
+      "gapMs": 15378435
+    },
+    {
+      "respondentId": "R09",
+      "targetAt": "2026-11-26T15:01:00+07:00",
+      "gapMs": 16741915
+    },
+    {
+      "respondentId": "R10",
+      "targetAt": "2026-11-26T19:06:00+07:00",
+      "gapMs": 14696426
+    }
+  ]
+}

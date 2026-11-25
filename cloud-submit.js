@@ -4,6 +4,10 @@ const { buildRespondents } = require('./lib/simulation');
 const FORM_RESPONSE_URL =
   'https://docs.google.com/forms/d/e/1FAIpQLSdjYJy4xzVl28dGCUzNAY2zIm9W4uoxO0bjs12GMjT2AyAZRA/formResponse';
 
+// Google membalas halaman konfirmasi bila jawaban benar-benar tersimpan.
+// Tanpa pengecekan ini, HTTP 200 bisa disalahartikan sebagai sukses.
+const CONFIRMATION_TEXT = 'telah direkam';
+
 function answerFor(question, respondent) {
   if (question.dimension) return respondent.answers[question.entry];
 
@@ -25,11 +29,7 @@ function answerFor(question, respondent) {
   }
 }
 
-async function submit(respondentId) {
-  const respondent = buildRespondents(10).find(item => item.id === respondentId);
-
-  if (!respondent) throw new Error(`Respondent tidak valid: ${respondentId}`);
-
+function buildBody(respondent) {
   const body = new URLSearchParams();
 
   body.set('fvv', '1');
@@ -46,17 +46,40 @@ async function submit(respondentId) {
     }
   }
 
-  if (process.argv.includes('--dry-run')) {
-    console.log(
-      JSON.stringify({
-        respondentId,
-        name: respondent.demographics.nama,
-        domisili: respondent.demographics.domisili,
-        status: 'dry-run',
-        entries: body.size
-      })
-    );
-    return;
+  return body;
+}
+
+function findRespondent(respondentId) {
+  const respondent = buildRespondents(10).find(item => item.id === respondentId);
+
+  if (!respondent) throw new Error(`Respondent tidak valid: ${respondentId}`);
+
+  return respondent;
+}
+
+function plainText(html) {
+  return html
+    .replace(/<script[\s\S]*?<\/script>/g, ' ')
+    .replace(/<style[\s\S]*?<\/style>/g, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+async function submit(respondentId, { dryRun = false } = {}) {
+  const respondent = findRespondent(respondentId);
+  const body = buildBody(respondent);
+
+  const summary = {
+    respondentId,
+    name: respondent.demographics.nama,
+    domisili: respondent.demographics.domisili,
+    entries: body.size
+  };
+
+  if (dryRun) {
+    return { ...summary, status: 'dry-run' };
   }
 
   const response = await fetch(FORM_RESPONSE_URL, {
@@ -69,29 +92,38 @@ async function submit(respondentId) {
     redirect: 'follow'
   });
 
-  if (!response.ok && response.status !== 0) {
+  const html = await response.text();
+
+  if (!response.ok) {
     throw new Error(`Google Form menolak respons: HTTP ${response.status}`);
   }
 
-  console.log(
-    JSON.stringify({
-      respondentId,
-      name: respondent.demographics.nama,
-      status: 'submitted',
-      httpStatus: response.status,
-      submittedAt: new Date().toISOString()
-    })
-  );
+  if (!plainText(html).includes(CONFIRMATION_TEXT)) {
+    throw new Error('Google Form tidak mengonfirmasi penyimpanan jawaban');
+  }
+
+  return {
+    ...summary,
+    status: 'submitted',
+    httpStatus: response.status,
+    submittedAt: new Date().toISOString()
+  };
 }
 
-const respondentId = process.argv[2];
+module.exports = { submit, buildBody, findRespondent, FORM_RESPONSE_URL };
 
-if (!respondentId) {
-  console.error('Pakai: node cloud-submit.js R02');
-  process.exit(1);
+if (require.main === module) {
+  const respondentId = process.argv[2];
+
+  if (!respondentId) {
+    console.error('Pakai: node cloud-submit.js R02 [--dry-run]');
+    process.exit(1);
+  }
+
+  submit(respondentId, { dryRun: process.argv.includes('--dry-run') })
+    .then(result => console.log(JSON.stringify(result)))
+    .catch(error => {
+      console.error(error.message);
+      process.exit(1);
+    });
 }
-
-submit(respondentId).catch(error => {
-  console.error(error.message);
-  process.exit(1);
-});

@@ -1,0 +1,10 @@
+{
+  "R01": {
+    "respondentId": "R01",
+    "name": "Adit Hermawan",
+    "status": "submitted",
+    "targetAt": "2026-11-25T07:25:00+07:00",
+    "submittedAt": "2026-11-25T00:14:20.065Z",
+    "note": "Uji koneksi manual sebelum scheduler aktif"
+  }
+}
