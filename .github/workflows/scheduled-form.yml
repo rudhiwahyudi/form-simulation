@@ -41,12 +41,21 @@ jobs:
         env:
           RESPONDENT: ${{ inputs.respondent }}
           DRY_RUN: ${{ inputs.dry_run }}
+          DEBUG_FORM_RESPONSE: "1"
         shell: bash
         run: |
           args=()
           if [ -n "$RESPONDENT" ]; then args+=("--force=$RESPONDENT"); fi
           if [ "$DRY_RUN" = "true" ]; then args+=("--dry-run"); fi
           node run-schedule.js "${args[@]}"
+
+      - name: Simpan respons Google untuk diagnosa
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: form-response-debug
+          path: form-response-debug.html
+          if-no-files-found: ignore
 
       - name: Simpan state jadwal
         if: ${{ inputs.dry_run != true }}

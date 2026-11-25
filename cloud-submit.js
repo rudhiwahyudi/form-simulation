@@ -6,7 +6,16 @@ const FORM_RESPONSE_URL =
 
 // Google membalas halaman konfirmasi bila jawaban benar-benar tersimpan.
 // Tanpa pengecekan ini, HTTP 200 bisa disalahartikan sebagai sukses.
-const CONFIRMATION_TEXT = 'telah direkam';
+// Teks konfirmasi mengikuti bahasa halaman, jadi beberapa varian diterima.
+const CONFIRMATION_TEXTS = [
+  'telah direkam',
+  'has been recorded',
+  'jawaban anda telah',
+  'your response has been'
+];
+
+// Kalau halaman form muncul lagi, submit ditolak (mis. ada isian wajib kosong).
+const FORM_PAGE_MARKERS = ['Nama / Inisial', 'Domisili', 'Lama Bekerja'];
 
 function answerFor(question, respondent) {
   if (question.dimension) return respondent.answers[question.entry];
@@ -93,13 +102,32 @@ async function submit(respondentId, { dryRun = false } = {}) {
   });
 
   const html = await response.text();
+  const text = plainText(html);
 
   if (!response.ok) {
     throw new Error(`Google Form menolak respons: HTTP ${response.status}`);
   }
 
-  if (!plainText(html).includes(CONFIRMATION_TEXT)) {
-    throw new Error('Google Form tidak mengonfirmasi penyimpanan jawaban');
+  const confirmed = CONFIRMATION_TEXTS.some(marker => text.includes(marker));
+
+  if (!confirmed) {
+    if (process.env.DEBUG_FORM_RESPONSE) {
+      const fs = require('fs');
+
+      fs.writeFileSync('form-response-debug.html', html, 'utf8');
+      console.error(`Respons Google disimpan ke form-response-debug.html`);
+      console.error(`Cuplikan: ${text.slice(0, 500)}`);
+    }
+
+    const rejected = FORM_PAGE_MARKERS.some(marker => text.includes(marker));
+    const reason = rejected
+      ? 'form dikembalikan (ada isian tidak valid)'
+      : 'halaman konfirmasi tidak ditemukan';
+
+    throw new Error(
+      `Google Form tidak mengonfirmasi penyimpanan jawaban: ${reason} ` +
+        `(HTTP ${response.status}, ${text.length} karakter)`
+    );
   }
 
   return {
