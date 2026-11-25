@@ -1,144 +1,204 @@
+const { chromium } = require('playwright');
 const questions = require('./lib/questions.json');
 const { buildRespondents } = require('./lib/simulation');
 
-const FORM_RESPONSE_URL =
-  'https://docs.google.com/forms/d/e/1FAIpQLSdjYJy4xzVl28dGCUzNAY2zIm9W4uoxO0bjs12GMjT2AyAZRA/formResponse';
+const FORM_URL =
+  'https://docs.google.com/forms/d/e/1FAIpQLSdjYJy4xzVl28dGCUzNAY2zIm9W4uoxO0bjs12GMjT2AyAZRA/viewform';
 
-// Google membalas halaman konfirmasi bila jawaban benar-benar tersimpan.
-// Tanpa pengecekan ini, HTTP 200 bisa disalahartikan sebagai sukses.
-// Teks konfirmasi mengikuti bahasa halaman, jadi beberapa varian diterima.
-const CONFIRMATION_TEXTS = [
-  'telah direkam',
-  'has been recorded',
-  'jawaban anda telah',
-  'your response has been'
-];
+// Form ini terdiri dari 5 halaman. Mengirim semua entry sekaligus lewat
+// /formResponse hanya menyimpan jawaban halaman pertama (persetujuan), jadi
+// pengisian harus lewat browser seperti manusia: isi halaman, klik Berikutnya,
+// lalu Kirim.
+const MAX_PAGES = 12;
 
-// Kalau halaman form muncul lagi, submit ditolak (mis. ada isian wajib kosong).
-const FORM_PAGE_MARKERS = ['Nama / Inisial', 'Domisili', 'Lama Bekerja'];
+const normalize = text =>
+  String(text)
+    .toLowerCase()
+    .replace(/\s+/g, ' ')
+    .replace(/\s*\*+$/, '')
+    .trim();
+
+const QUESTION_BY_TITLE = new Map(
+  questions.map(question => [normalize(question.title), question])
+);
+
+function resolveQuestion(title) {
+  const exact = QUESTION_BY_TITLE.get(title);
+
+  if (exact) return exact;
+
+  const prefix = title.slice(0, 45);
+
+  return questions.find(question => normalize(question.title).startsWith(prefix));
+}
 
 function answerFor(question, respondent) {
   if (question.dimension) return respondent.answers[question.entry];
+
+  const { demographics } = respondent;
 
   switch (question.formIndex) {
     case 0:
       return 'Ya';
     case 2:
-      return respondent.demographics.nama;
+      return demographics.nama;
     case 3:
-      return String(respondent.demographics.usia);
+      return String(demographics.usia);
     case 4:
-      return respondent.demographics.statusPekerjaan;
+      return demographics.statusPekerjaan;
     case 5:
-      return respondent.demographics.domisili;
+      return demographics.domisili;
     case 6:
-      return respondent.demographics.lamaBekerja;
+      return demographics.lamaBekerja;
     default:
-      return null;
+      throw new Error(`Tidak ada jawaban untuk: ${question.title}`);
   }
 }
 
-function buildBody(respondent) {
-  const body = new URLSearchParams();
+async function readListItems(page) {
+  const items = page.locator('div[role="listitem"]');
+  const count = await items.count();
+  const result = [];
 
-  body.set('fvv', '1');
-  body.set('pageHistory', '0');
-  body.set('submissionTimestamp', '-1');
+  for (let index = 0; index < count; index++) {
+    const item = items.nth(index);
+    const heading = item.locator('div[role="heading"]').first();
+    const title = (await heading.count()) ? normalize(await heading.innerText()) : '';
+    const hasInput =
+      (await item.locator('div[role="radiogroup"]').count()) > 0 ||
+      (await item.locator('input[type="text"], textarea').count()) > 0;
 
-  for (const question of questions) {
-    if (!question.entry) continue;
-
-    const value = answerFor(question, respondent);
-
-    if (value !== null) {
-      body.set(`entry.${question.entry}`, value);
+    // Listitem tanpa input adalah judul section / deskripsi.
+    if (hasInput && title) {
+      result.push({ item, title });
     }
   }
 
-  return body;
+  return result;
 }
 
-function findRespondent(respondentId) {
+async function fillPage(page, respondent) {
+  const items = await readListItems(page);
+  let filled = 0;
+
+  for (const entry of items) {
+    const question = resolveQuestion(entry.title);
+
+    if (!question) {
+      throw new Error(`Pertanyaan tidak dikenali: "${entry.title.slice(0, 70)}"`);
+    }
+
+    const value = answerFor(question, respondent);
+
+    if (question.type === 'choice') {
+      const radio = entry.item.getByRole('radio', { name: value, exact: true });
+      await radio.waitFor({ state: 'visible', timeout: 15000 });
+      await radio.click({ timeout: 15000 });
+
+      for (let attempt = 0; attempt < 10; attempt++) {
+        if ((await radio.getAttribute('aria-checked')) === 'true') break;
+        await page.waitForTimeout(150);
+      }
+
+      if ((await radio.getAttribute('aria-checked')) !== 'true') {
+        await radio.click({ force: true, timeout: 15000 });
+        await page.waitForTimeout(300);
+
+        if ((await radio.getAttribute('aria-checked')) !== 'true') {
+          throw new Error(`Gagal memilih "${value}" pada "${question.title.slice(0, 50)}"`);
+        }
+      }
+    } else {
+      const input = entry.item.getByRole('textbox').first();
+      await input.waitFor({ state: 'visible', timeout: 15000 });
+
+      // Input baru aktif setelah section selesai dirender.
+      for (let attempt = 0; attempt < 20; attempt++) {
+        if (await input.isEnabled()) break;
+        await page.waitForTimeout(250);
+      }
+
+      await input.fill(String(value), { timeout: 15000 });
+      await input.evaluate(node => node.blur());
+    }
+
+    filled++;
+  }
+
+  return filled;
+}
+
+async function submit(respondentId, { dryRun = false } = {}) {
   const respondent = buildRespondents(10).find(item => item.id === respondentId);
 
   if (!respondent) throw new Error(`Respondent tidak valid: ${respondentId}`);
 
-  return respondent;
-}
-
-function plainText(html) {
-  return html
-    .replace(/<script[\s\S]*?<\/script>/g, ' ')
-    .replace(/<style[\s\S]*?<\/style>/g, ' ')
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/&nbsp;/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-
-async function submit(respondentId, { dryRun = false } = {}) {
-  const respondent = findRespondent(respondentId);
-  const body = buildBody(respondent);
-
+  const browser = await chromium.launch({ headless: true });
+  const context = await browser.newContext({
+    locale: 'id-ID',
+    viewport: { width: 1280, height: 900 }
+  });
+  const page = await context.newPage();
   const summary = {
     respondentId,
     name: respondent.demographics.nama,
-    domisili: respondent.demographics.domisili,
-    entries: body.size
+    domisili: respondent.demographics.domisili
   };
 
-  if (dryRun) {
-    return { ...summary, status: 'dry-run' };
-  }
+  try {
+    await page.goto(FORM_URL, { waitUntil: 'networkidle', timeout: 90000 });
+    await page
+      .locator('div[role="listitem"]')
+      .first()
+      .waitFor({ state: 'visible', timeout: 20000 });
 
-  const response = await fetch(FORM_RESPONSE_URL, {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/x-www-form-urlencoded',
-      'user-agent': 'Mozilla/5.0 (compatible; form-simulation-scheduler)'
-    },
-    body,
-    redirect: 'follow'
-  });
+    let filledTotal = 0;
 
-  const html = await response.text();
-  const text = plainText(html);
+    for (let step = 1; step <= MAX_PAGES; step++) {
+      filledTotal += await fillPage(page, respondent);
 
-  if (!response.ok) {
-    throw new Error(`Google Form menolak respons: HTTP ${response.status}`);
-  }
+      const next = page.getByRole('button', { name: 'Berikutnya', exact: true });
 
-  const confirmed = CONFIRMATION_TEXTS.some(marker => text.includes(marker));
+      if ((await next.count()) === 0 || !(await next.first().isVisible())) break;
 
-  if (!confirmed) {
-    if (process.env.DEBUG_FORM_RESPONSE) {
-      const fs = require('fs');
-
-      fs.writeFileSync('form-response-debug.html', html, 'utf8');
-      console.error(`Respons Google disimpan ke form-response-debug.html`);
-      console.error(`Cuplikan: ${text.slice(0, 500)}`);
+      await next.first().click();
+      await page.waitForTimeout(600);
+      await page.waitForLoadState('networkidle');
     }
 
-    const rejected = FORM_PAGE_MARKERS.some(marker => text.includes(marker));
-    const reason = rejected
-      ? 'form dikembalikan (ada isian tidak valid)'
-      : 'halaman konfirmasi tidak ditemukan';
+    if (dryRun) {
+      return { ...summary, filled: filledTotal, status: 'dry-run' };
+    }
 
-    throw new Error(
-      `Google Form tidak mengonfirmasi penyimpanan jawaban: ${reason} ` +
-        `(HTTP ${response.status}, ${text.length} karakter)`
-    );
+    const submitButton = page.getByRole('button', { name: 'Kirim', exact: true });
+
+    if ((await submitButton.count()) === 0) {
+      throw new Error('Tombol Kirim tidak ditemukan (mungkin ada isian wajib kosong)');
+    }
+
+    await submitButton.first().click();
+    await page.waitForTimeout(2500);
+
+    const body = await page.locator('body').innerText();
+    const recorded = /Jawaban Anda telah direkam|Your response has been recorded/i.test(body);
+
+    if (!recorded) {
+      throw new Error('Konfirmasi "Jawaban Anda telah direkam" tidak muncul');
+    }
+
+    return {
+      ...summary,
+      filled: filledTotal,
+      status: 'submitted',
+      submittedAt: new Date().toISOString()
+    };
+  } finally {
+    await context.close();
+    await browser.close();
   }
-
-  return {
-    ...summary,
-    status: 'submitted',
-    httpStatus: response.status,
-    submittedAt: new Date().toISOString()
-  };
 }
 
-module.exports = { submit, buildBody, findRespondent, FORM_RESPONSE_URL };
+module.exports = { submit, FORM_URL };
 
 if (require.main === module) {
   const respondentId = process.argv[2];

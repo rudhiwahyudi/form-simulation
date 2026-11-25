@@ -1,58 +1,58 @@
 {
-  "generatedAt": "2026-11-25T00:14:20.061Z",
+  "generatedAt": "2026-11-25T01:39:03.592Z",
   "timezone": "WIB (UTC+7)",
-  "windowStart": "2026-11-25T07:25:00+07:00",
+  "windowStart": "2026-11-25T08:50:00+07:00",
   "windowEnd": "2026-11-26T23:59:00+07:00",
   "entries": [
     {
       "respondentId": "R01",
-      "targetAt": "2026-11-25T07:25:00+07:00",
+      "targetAt": "2026-11-25T08:50:00+07:00",
       "gapMs": 0
     },
     {
       "respondentId": "R02",
-      "targetAt": "2026-11-25T07:44:00+07:00",
-      "gapMs": 12039346
+      "targetAt": "2026-11-25T12:49:00+07:00",
+      "gapMs": 14380719
     },
     {
       "respondentId": "R03",
-      "targetAt": "2026-11-25T12:16:00+07:00",
-      "gapMs": 16343402
+      "targetAt": "2026-11-25T17:44:00+07:00",
+      "gapMs": 17679571
     },
     {
       "respondentId": "R04",
-      "targetAt": "2026-11-25T15:59:00+07:00",
-      "gapMs": 13338715
+      "targetAt": "2026-11-25T22:36:00+07:00",
+      "gapMs": 17533300
     },
     {
       "respondentId": "R05",
-      "targetAt": "2026-11-25T20:03:00+07:00",
-      "gapMs": 14682377
+      "targetAt": "2026-11-26T01:45:00+07:00",
+      "gapMs": 11348172
     },
     {
       "respondentId": "R06",
-      "targetAt": "2026-11-25T23:21:00+07:00",
-      "gapMs": 11843166
+      "targetAt": "2026-11-26T06:04:00+07:00",
+      "gapMs": 15545763
     },
     {
       "respondentId": "R07",
-      "targetAt": "2026-11-26T03:04:00+07:00",
-      "gapMs": 13396318
+      "targetAt": "2026-11-26T10:34:00+07:00",
+      "gapMs": 16184592
     },
     {
       "respondentId": "R08",
-      "targetAt": "2026-11-26T07:20:00+07:00",
-      "gapMs": 15378435
+      "targetAt": "2026-11-26T15:18:00+07:00",
+      "gapMs": 17011609
     },
     {
       "respondentId": "R09",
-      "targetAt": "2026-11-26T11:59:00+07:00",
-      "gapMs": 16741915
+      "targetAt": "2026-11-26T18:57:00+07:00",
+      "gapMs": 13141084
     },
     {
       "respondentId": "R10",
-      "targetAt": "2026-11-26T16:04:00+07:00",
-      "gapMs": 14696426
+      "targetAt": "2026-11-26T23:30:00+07:00",
+      "gapMs": 16410478
     }
   ]
 }
