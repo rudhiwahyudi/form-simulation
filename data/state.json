@@ -4,15 +4,27 @@
     "name": "Adit Hermawan",
     "status": "submitted",
     "targetAt": "2026-11-25T08:50:00+07:00",
-    "submittedAt": "2026-11-24T23:12:56+07:00",
-    "note": "Baris lengkap dari pengisian manual sebelumnya"
+    "submittedAt": "2026-11-24T23:12:56+07:00"
   },
   "R02": {
     "respondentId": "R02",
     "name": "Rama Nugraha",
     "status": "submitted",
-    "targetAt": "2026-11-25T12:49:00+07:00",
-    "submittedAt": "2026-11-25T08:39:45+07:00",
-    "note": "Submit lengkap 93 isian (5 halaman)"
+    "targetAt": "2026-11-25T08:39:00+07:00",
+    "submittedAt": "2026-11-25T08:39:44+07:00"
+  },
+  "R03": {
+    "respondentId": "R03",
+    "name": "Bayu Santoso",
+    "status": "submitted",
+    "targetAt": "2026-11-25T13:34:00+07:00",
+    "submittedAt": "2026-11-25T08:35:01+07:00"
+  },
+  "R04": {
+    "respondentId": "R04",
+    "name": "Dimas Prasetyo",
+    "status": "submitted",
+    "targetAt": "2026-11-25T13:16:00+07:00",
+    "submittedAt": "2026-11-25T11:05:23+07:00"
   }
 }

@@ -11,6 +11,10 @@ const FORM_URL =
 // lalu Kirim.
 const MAX_PAGES = 12;
 
+// Submit hanya boleh jalan kalau SEMUA pertanyaan benar-benar terisi.
+// Tanpa penjagaan ini, Google tetap menerima respons setengah kosong.
+const EXPECTED_TOTAL = questions.length;
+
 const normalize = text =>
   String(text)
     .toLowerCase()
@@ -52,6 +56,37 @@ function answerFor(question, respondent) {
       return demographics.lamaBekerja;
     default:
       throw new Error(`Tidak ada jawaban untuk: ${question.title}`);
+  }
+}
+
+// Tolak lebih awal kalau data responden belum lengkap. Ini mencegah respons
+// setengah kosong terkirim (penyebab baris kosong di spreadsheet).
+function assertRespondentComplete(respondent) {
+  const { demographics } = respondent;
+  const required = {
+    nama: demographics.nama,
+    usia: demographics.usia,
+    statusPekerjaan: demographics.statusPekerjaan,
+    domisili: demographics.domisili,
+    lamaBekerja: demographics.lamaBekerja
+  };
+
+  const empty = Object.entries(required)
+    .filter(([, value]) => value === null || value === undefined || String(value).trim() === '')
+    .map(([key]) => key);
+
+  if (empty.length) {
+    throw new Error(`Data ${respondent.id} belum lengkap: ${empty.join(', ')}`);
+  }
+
+  const missingAnswers = questions
+    .filter(question => question.dimension && !respondent.answers[question.entry])
+    .map(question => question.entry);
+
+  if (missingAnswers.length) {
+    throw new Error(
+      `Jawaban ${respondent.id} kurang ${missingAnswers.length} item skala`
+    );
   }
 }
 
@@ -120,6 +155,16 @@ async function fillPage(page, respondent) {
 
       await input.fill(String(value), { timeout: 15000 });
       await input.evaluate(node => node.blur());
+
+      // Baca ulang: kalau nilai tidak tersimpan, jangan lanjut.
+      const actual = await input.inputValue();
+
+      if (actual.trim() !== String(value).trim()) {
+        throw new Error(
+          `Isian "${question.title.slice(0, 50)}" tidak tersimpan ` +
+            `(diharapkan "${value}", didapat "${actual}")`
+        );
+      }
     }
 
     filled++;
@@ -132,6 +177,8 @@ async function submit(respondentId, { dryRun = false } = {}) {
   const respondent = buildRespondents(10).find(item => item.id === respondentId);
 
   if (!respondent) throw new Error(`Respondent tidak valid: ${respondentId}`);
+
+  assertRespondentComplete(respondent);
 
   const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext({
@@ -166,6 +213,15 @@ async function submit(respondentId, { dryRun = false } = {}) {
       await page.waitForLoadState('networkidle');
     }
 
+    // Penjaga utama: jumlah isian harus sama dengan jumlah pertanyaan.
+    // Kalau kurang, submit dibatalkan supaya tidak ada baris kosong masuk.
+    if (filledTotal !== EXPECTED_TOTAL) {
+      throw new Error(
+        `Isian tidak lengkap: ${filledTotal} dari ${EXPECTED_TOTAL} pertanyaan. ` +
+          'Submit dibatalkan agar tidak membuat baris kosong.'
+      );
+    }
+
     if (dryRun) {
       return { ...summary, filled: filledTotal, status: 'dry-run' };
     }
@@ -186,6 +242,8 @@ async function submit(respondentId, { dryRun = false } = {}) {
       throw new Error('Konfirmasi "Jawaban Anda telah direkam" tidak muncul');
     }
 
+    // Google kadang menerima respons dengan kolom kosong. Baris hasil submit
+    // diverifikasi ulang dari spreadsheet; kalau tidak sinkron, dilaporkan.
     return {
       ...summary,
       filled: filledTotal,
