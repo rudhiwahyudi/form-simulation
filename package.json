@@ -10,6 +10,7 @@
     "schedule": "node run-schedule.js",
     "schedule:dry": "node run-schedule.js --dry-run",
     "schedule:watch": "node watch-schedule.js",
+    "schedule:status": "node check-sync.js",
     "pull": "node pull.js",
     "pull:login": "node pull.js --login"
   },
