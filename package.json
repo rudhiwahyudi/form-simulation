@@ -9,6 +9,7 @@
     "cloud-submit": "node cloud-submit.js",
     "schedule": "node run-schedule.js",
     "schedule:dry": "node run-schedule.js --dry-run",
+    "schedule:watch": "node watch-schedule.js",
     "pull": "node pull.js",
     "pull:login": "node pull.js --login"
   },

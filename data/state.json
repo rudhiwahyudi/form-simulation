@@ -6,5 +6,13 @@
     "targetAt": "2026-11-25T08:50:00+07:00",
     "submittedAt": "2026-11-24T23:12:56+07:00",
     "note": "Baris lengkap dari pengisian manual sebelumnya"
+  },
+  "R02": {
+    "respondentId": "R02",
+    "name": "Rama Nugraha",
+    "status": "submitted",
+    "targetAt": "2026-11-25T12:49:00+07:00",
+    "submittedAt": "2026-11-25T08:39:45+07:00",
+    "note": "Submit lengkap 93 isian (5 halaman)"
   }
 }
