@@ -1,11 +1,11 @@
 name: Scheduled 10 dummy form responses
 
 on:
-  # Poller tiap 5 menit. Jadwal pengisian sebenarnya disimpan di
-  # data/schedule.json, jadi jadwal yang terlewat tetap dikirim (catch-up)
-  # dan tidak hilang seperti pada cron per-jam.
+  # Cron hanya dipakai untuk menyambung job yang berjalan lama. Interval 5
+  # menit tidak bisa diandalkan: GitHub hanya memicu 2 dari ~300 jadwal pada
+  # repo ini, sehingga job dibuat hidup ~5,5 jam dan loop sendiri.
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "*/30 * * * *"
   workflow_dispatch:
     inputs:
       respondent:
@@ -21,6 +21,8 @@ on:
 permissions:
   contents: write
 
+# Satu job berjalan, satu menunggu. GitHub membatalkan run pending yang lebih
+# lama, jadi antrean tidak menumpuk.
 concurrency:
   group: scheduled-form
   cancel-in-progress: false
@@ -28,10 +30,12 @@ concurrency:
 jobs:
   submit:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 350
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: master
 
       - uses: actions/setup-node@v4
         with:
@@ -49,23 +53,7 @@ jobs:
         env:
           RESPONDENT: ${{ inputs.respondent }}
           DRY_RUN: ${{ inputs.dry_run }}
+          MAX_RUNTIME_MS: "19800000"
+          SHEET_CSV_URL: ${{ secrets.SHEET_CSV_URL }}
         shell: bash
-        run: |
-          args=()
-          if [ -n "$RESPONDENT" ]; then args+=("--force=$RESPONDENT"); fi
-          if [ "$DRY_RUN" = "true" ]; then args+=("--dry-run"); fi
-          node run-schedule.js "${args[@]}"
-
-      - name: Simpan state jadwal
-        if: ${{ inputs.dry_run != true }}
-        shell: bash
-        run: |
-          if [ -z "$(git status --porcelain data)" ]; then
-            echo "Tidak ada perubahan state."
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data
-          git commit -m "chore: update jadwal & state pengisian"
-          git push
+        run: node watch-schedule.js
